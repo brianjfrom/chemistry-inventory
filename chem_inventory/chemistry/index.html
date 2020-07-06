@@ -1,0 +1,53 @@
+<!-- <!DOCTYPE html> -->
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <!--   <meta name="viewport" content="width=device-width, initial-scale="> -->
+  <title>Chemisty Inventory</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+  <h1>Chemisty Inventory</h1>
+  <div class="barcode_scan">
+    <div class="chem_barcode">
+      <h2>CH Reagents Only</h2>
+      Scan Barcode: <br> <input type="number" class="barcodeNumber" value="0100630414596372102910531721030124011097604422826">
+      <button type="submit" class="bcnSubmit">Submit</button>
+      <div class="barcode__data">
+        <p class="reference_number">Reference Number: <span id="refNum"></span></p>
+        <p class="lot_number">Lot Number: <span id="lotNumber"></span></p>
+        <p class="expire_date">Expire Date: <span id="exDate"></span></p>
+        <p class="test_name">Test Name: <span id="test_name"></span> </p>
+        Test flex per box: <input type="number" class="flexPerBox" placeholder='"1" or "5"' val="" required>
+        <br>
+        Number of boxes: <input type="number" id="numberBoxs" placeholder='"20"' val="" required>
+        <br>
+        <button id="addInventory">Add to Inventory</button>
+        
+      </div>
+    </div>
+    <div class="Im_barcode">
+      <h2>IM Reagents Only</h2>
+              Scan Barcode: <br> <input type="number" class="barcodeNumberIM" value="010063041459882610929852331720100924010995558422840">
+      <button type="submit" class="bcnImSubmit">Submit</button>
+      <div class="IM_barcode__data">
+        <p class="reference_number">Reference Number: <span id="refNumIm"></span></p>
+        <p class="lot_number">Lot Number: <span id="lotNumberIm"></span></p>
+        <p class="expire_date">Expire Date: <span id="exDateIm"></span></p>
+        <p class="test_name_im">Test Name: <span id="test_name_im"></span> </p>
+        Test flex per box: <input type="number" class="flexPerBoxIm" placeholder='"1" or "5"' val="" required>
+        <br>
+        Number of boxes: <input type="number" id="numberBoxsIm" placeholder='"10"' val="" required>
+        <br>
+        <button id="addInventoryIm">Add to Inventory</button>
+        
+      </div>
+      </div>
+    </div>
+  </div>
+  <script src="./script.js"></script>
+</body>
+
+</html>

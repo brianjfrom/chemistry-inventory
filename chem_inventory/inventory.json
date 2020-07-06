@@ -1,0 +1,23 @@
+[
+  {
+    "lot": "291053",
+    "shortName": "TP",
+    "TestName": "Total Protein",
+    "expireDate": "03/01/21",
+    "refNumber": "11097604"
+  },
+  {
+    "lot": "201138",
+    "shortName": "Mg",
+    "TestName": "Magnesium",
+    "expireDate": "04/01/21"
+  },
+  {
+    "testName": "BUN",
+    "shortName": "UN_c",
+    "expireDate": "2021-03-01",
+    "lot": "291055",
+    "flexPerBox": 1,
+    "numOfBoxs": 4
+  }
+]

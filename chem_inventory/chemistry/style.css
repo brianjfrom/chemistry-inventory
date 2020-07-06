@@ -1,0 +1,26 @@
+* {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+* + * {
+  margin-top: 10px;
+}
+
+.barcode_scan {
+columns: 2;
+}
+.chem_barcode {
+  padding-left: 1.5em;
+}
+
+.barcodeNumber {
+  width: 40vw;
+}
+.barcodeNumberIM {
+  width: 40vw;
+}
+.tne {
+  display: none;
+}
