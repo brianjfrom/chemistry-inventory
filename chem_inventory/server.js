@@ -22,6 +22,7 @@ app.use(express.static('chemistry'));
 
 app.get('/add/:TestName.:shortName.:expireDate.:lot.:flexPerBox.:numOfBoxs', addArray);
 
+let nuumOfBoxs = ""
 function addArray(req, res) {
     let data = req.params;
     let testName = data.TestName;
@@ -29,7 +30,8 @@ function addArray(req, res) {
     let expireDate = data.expireDate;
     let lot = data.lot;
     let flexPerBox = Number(data.flexPerBox);
-    let numOfBoxs = Number(data.numOfBoxs);
+    numOfBoxs = Number(data.numOfBoxs);
+
     let newInventory = {
         "testName": testName,
         "shortName": shortName,
@@ -38,22 +40,56 @@ function addArray(req, res) {
         "flexPerBox": flexPerBox,
         "numOfBoxs": numOfBoxs
     };
-    if (inventory.lot === lot) {
-        console.log(inventory.numOfBoxs)
-    }
-
-    inventory.push(newInventory);
-    fs.writeFile('inventory.json', JSON.stringify(inventory, null, 2), err =>{
-        if (err) throw err;
-        console.log("Inventory Added")
+    
+    index = inventory.findIndex(function (lots, index) {
+        return lots.lot === lot; 
     });
+    console.log(index)
+    if ([index] >= 0) {
+        console.log(numOfBoxs, "numOfBoxs");
+        let newNumber = numOfBoxs;
+        console.log(numOfBoxs);  
+        let originalNumber = inventory[index].numOfBoxs;
+        console.log(originalNumber, "orig of boxs");
+        
+        console.log(newNumber, "new num of box")
+        let calNum = originalNumber + newNumber;
+        console.log(calNum, "cal num of box")
+
+        inventory.splice(index);
+        let addToInventory = {
+            "testName": testName,
+            "shortName": shortName,
+            "expireDate": expireDate,
+            "lot": lot,
+            "flexPerBox": flexPerBox,
+            "numOfBoxs": calNum
+        }
+        inventory.push(addToInventory);
+        fs.writeFile('inventory.json', JSON.stringify(inventory, null, 2), err =>{
+        if (err) throw err;
+        res.send("Number of Boxs updated")
+    });
+    } else if ([index === -1]){
+        inventory.push(newInventory);
+        fs.writeFile('inventory.json', JSON.stringify(inventory, null, 2), err =>{
+        if (err) throw err;
+        res.send("Inventory Added");
+    });
+    // } else {
+    //     res.send("unable to send to inventory at this time");
+    }
+};
+    
+
+    
 
 app.get('/all', getAll); 
 
 function getAll(req, res) {
     res.send(reagents);
 };
-}
+
 app.get('/inventory', getInventory);
 
 function getInventory(req, res) {

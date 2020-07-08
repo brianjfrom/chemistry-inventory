@@ -18,6 +18,22 @@
     "expireDate": "2021-03-01",
     "lot": "291055",
     "flexPerBox": 1,
+    "numOfBoxs": 60
+  },
+  {
+    "testName": "Albumin",
+    "shortName": "Albp",
+    "expireDate": "03-16-2021",
+    "lot": "100054",
+    "flexPerBox": 4,
+    "numOfBoxs": 2
+  },
+  {
+    "testName": "HemaglobinA1C",
+    "shortName": "A1c_e",
+    "expireDate": "07-08-2020",
+    "lot": "190253",
+    "flexPerBox": 2,
     "numOfBoxs": 4
   }
 ]

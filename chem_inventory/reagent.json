@@ -22,16 +22,51 @@
     {
       "name": "CK-MB",
       "shName": "CKMB",
-      "refChem": "10995530"
+      "refChem": "10995530",
+      "flexPerBox": 1
     },
     {
       "name": "HiV",
       "shName": "chiv",
-      "refChem": "109954559"
+      "refChem": "109954559",
+      "flexPerBox": 1
     },
     {
       "name": "Digoxin",
       "shName": "DIG",
-      "refChem": "10995558"
+      "refChem": "10995558",
+      "flexPerBox": 1
+    },
+    {
+      "name": "Hemaglobin A1C",
+      "shName": "A1c_E",
+      "refChem": "11097536",
+      "flexPerBox": 2
+    },
+    {
+      "name": "Magnesium",
+      "shName": "Mg",
+      "refChem": "11097612",
+      "flexPerBox": 4
+    },
+    {
+      "name": "Albumin",
+      "shName": "AlbP",
+      "refChem": "11097530",
+      "flexPerBox": 4
+    },
+    {
+      "name": "BUN",
+      "shName": "UN_c",
+      "refChem": "11097593",
+      "flexPerBox": 4
+    },
+    {
+      "name": "Total Protein",
+      "shName": "TP",
+      "refChem": "11097604",
+      "flexPerBox": 4
     }
  ]
+
+ 
