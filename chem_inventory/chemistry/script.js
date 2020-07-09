@@ -26,7 +26,6 @@ let dayIm = expDateStringIm.slice(4, 7);
 let yearIm = expDateStringIm.slice(0, 2);
 let dateIm = `${monthIm}/${dayIm}/${yearIm}`;
 let expireDateIm = new Date(dateIm);
-let flexBox = document.querySelector(".flexPerBox").value;
 let boxNumber = document.querySelector("#numberBoxs").value;
 let getTestInfo = document.querySelector("#addInventory");
 let getTestInfoIm = document.querySelector("#addInventoryIm");
@@ -62,6 +61,8 @@ fetch('all').then(Response => Response.json())
       chemTestName = reagentData[index].name.toUpperCase();
       document.querySelector("#test_name").innerHTML = chemTestName;
       chemTestShortName = reagentData[index].shName;
+      flexBox = reagentData[index].flexPerBox;
+      document.querySelector("#flexPerBox").innerHTML = flexBox;
     }
   };
 
@@ -97,6 +98,9 @@ fetch('all').then(Response => Response.json())
       chemTestNameIm = reagentData[indexIm].name.toUpperCase();
       document.querySelector("#test_name_im").innerHTML = chemTestNameIm;
       chemTestShortNameIm = reagentData[indexIm].shName;
+      flexBoxIm = reagentData[indexIm].flexPerBox;
+      console.log(flexBoxIm );
+      document.querySelector('#flexPerBoxIm').innerHTML = flexBoxIm;
     }
   };
 
@@ -132,7 +136,6 @@ fetch('all').then(Response => Response.json())
 
 
 getTestInfo.onclick = function getInfo() {
-  flexBox = document.querySelector(".flexPerBox").value;
   boxNumber = document.querySelector("#numberBoxs").value;
 
   let addInfo = {
@@ -147,7 +150,6 @@ getTestInfo.onclick = function getInfo() {
 };
 
 getTestInfoIm.onclick = function getInfoIm() {
-  flexBoxIm = document.querySelector(".flexPerBoxIm").value;
   boxNumberIm = document.querySelector("#numberBoxsIm").value;
 
   let addInfoIm = {

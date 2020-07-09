@@ -1,7 +1,7 @@
 let fs = require('fs');
 let data = fs.readFileSync('reagent.json');
 let reagents = JSON.parse(data);
-
+console.log(reagents);
 let inventorySheet = fs.readFileSync('inventory.json');
 let inventory = JSON.parse(inventorySheet);
 
@@ -88,6 +88,7 @@ app.get('/all', getAll);
 
 function getAll(req, res) {
     res.send(reagents);
+    console.log(reagents);
 };
 
 app.get('/inventory', getInventory);

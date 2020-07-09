@@ -1,25 +1,5 @@
  [
     {
-      "name": "total protein",
-      "shName": "TP",
-      "refChem": "11097604"
-    },
-    {
-      "name": "hemoglobin A1C",
-      "shName": "A1c_E",
-      "refChem": "11097536"
-    },
-    {
-      "name": "BUN",
-      "shName": "UN_c",
-      "refChem": "11097593"
-    },
-    {
-      "name": "Magnesium",
-      "shName": "Mg",
-      "refChem": "11097612"
-    },
-    {
       "name": "CK-MB",
       "shName": "CKMB",
       "refChem": "10995530",
