@@ -1,39 +1,42 @@
 [
   {
-    "lot": "291053",
+    "testName": "TOTAL_PROTEIN",
     "shortName": "TP",
-    "TestName": "Total Protein",
-    "expireDate": "03/01/21",
-    "refNumber": "11097604"
+    "expireDate": "03-01-21",
+    "lot": "291053",
+    "flexPerBox": 4,
+    "numOfBoxs": 11
   },
   {
-    "lot": "201138",
-    "shortName": "Mg",
-    "TestName": "Magnesium",
-    "expireDate": "04/01/21"
+    "testName": "ALBUMIN",
+    "shortName": "AlbP",
+    "expireDate": "03-16-21",
+    "lot": "100054",
+    "flexPerBox": 4,
+    "numOfBoxs": 5
   },
   {
     "testName": "BUN",
     "shortName": "UN_c",
-    "expireDate": "2021-03-01",
+    "expireDate": "03-01-21",
     "lot": "291055",
-    "flexPerBox": 1,
-    "numOfBoxs": 60
-  },
-  {
-    "testName": "Albumin",
-    "shortName": "Albp",
-    "expireDate": "03-16-2021",
-    "lot": "100054",
     "flexPerBox": 4,
-    "numOfBoxs": 2
+    "numOfBoxs": 8
   },
   {
-    "testName": "HemaglobinA1C",
-    "shortName": "A1c_e",
-    "expireDate": "07-08-2020",
+    "testName": "MAGNESIUM",
+    "shortName": "Mg",
+    "expireDate": "04-01-21",
+    "lot": "201138",
+    "flexPerBox": 4,
+    "numOfBoxs": 40
+  },
+  {
+    "testName": "HEMAGLOBIN A1C",
+    "shortName": "A1c_E",
+    "expireDate": "07-08-20",
     "lot": "190253",
     "flexPerBox": 2,
-    "numOfBoxs": 4
+    "numOfBoxs": 50
   }
 ]

@@ -1,10 +1,10 @@
+
 function displayDate(date) {
   return date.toLocaleDateString(
     undefined,
     { day: 'numeric', month: 'long', year: 'numeric'}
   )
 }
-
 
 let getBarcode = document.querySelector(".bcnSubmit");
 let getBarcodeIM = document.querySelector(".bcnImSubmit");
@@ -29,9 +29,17 @@ let expireDateIm = new Date(dateIm);
 let boxNumber = document.querySelector("#numberBoxs").value;
 let getTestInfo = document.querySelector("#addInventory");
 let getTestInfoIm = document.querySelector("#addInventoryIm");
+// let chemTestName = reagentData[index].name.toUpperCase();
+// let chemTestShortName = ""
+// let flexBox = ""
+// loadInvintory();
+// let chemTestName = reagentData[index].name.toUpperCase();
+// let chemTestShortName = reagentData[index].shName;
+// let flexBox = reagentData[index].flexPerBox;
 
-fetch('all').then(Response => Response.json())
-.then((reagentData) => {
+
+  fetch('all').then(Response => Response.json())
+  .then((reagentData) => {
   let index = reagentData.findIndex(function (refChems, index) {
     return refChems.refChem === refNumber;
   });
@@ -43,12 +51,13 @@ fetch('all').then(Response => Response.json())
     month = expDateString.slice(2, 4);
     day = expDateString.slice(4, 7);
     year = expDateString.slice(0, 2);
-    date = `${month}/${day}/${year}`;
+    date = `${month}-${day}-${year}`;
     expireDate = new Date(date);
     refNumber = barcode.slice(35, 43);
     document.querySelector("#refNum").innerHTML = refNumber;
     document.querySelector("#lotNumber").innerHTML = lotNumber;
     document.querySelector("#exDate").innerHTML = displayDate(expireDate);
+    
   
     let index = reagentData.findIndex(function (refChems, index) {
       return refChems.refChem === refNumber;
@@ -65,6 +74,31 @@ fetch('all').then(Response => Response.json())
       document.querySelector("#flexPerBox").innerHTML = flexBox;
     }
   };
+  getTestInfo.onclick = function getInfo() {
+    boxNumber = document.querySelector("#numberBoxs").value;
+  
+  let lot = lotNumber;
+  let expire = date;
+  let testName = chemTestName;
+  console.log(testName);
+  let shortName = chemTestShortName;
+  let flexPerBox = flexBox;
+  let numOfBoxs = boxNumber;
+  let methodData = {
+    method: 'POST',
+    credentials: 'same-origin',
+    headers: {
+      'Content-Type': 'text/plain'
+  }
+}
+
+fetch('/add/' + testName + '.' + shortName + '.' + expire + '.' + lot + '.' + flexPerBox + '.' + numOfBoxs, methodData )
+.then(response => {
+  console.log(response)
+})
+  }
+
+
 
   let indexIm = reagentData.findIndex(function (refChems, index) {
     return refChems.refChem === refNumberIm;
@@ -112,6 +146,7 @@ fetch('all').then(Response => Response.json())
 
 
 
+
 // let testName = [
 // //   {
 //     lot: "291053",
@@ -135,22 +170,42 @@ fetch('all').then(Response => Response.json())
 // ];
 
 
-getTestInfo.onclick = function getInfo() {
-  boxNumber = document.querySelector("#numberBoxs").value;
+// getTestInfo.onclick = function getInfo() {
+//   boxNumber = document.querySelector("#numberBoxs").value;
+  // let addInfo = {
+  //   lot: lotNumber,
+  //   expire: displayDate(expireDate),
+  //   testName: chemTestName,
+  //   shortName: chemTestShortName,
+  //   flexPerBox: flexBox,
+  //   numOfBoxs: boxNumber
+  // };
+  
+  // console.log(addInfo);
+// };
 
-  let addInfo = {
-    lot: lotNumber,
-    expire: displayDate(expireDate),
-    testName: chemTestName,
-    shortName: chemTestShortName,
-    flexPerBox: flexBox,
-    numOfBoxs: boxNumber
-  };
-  console.log(addInfo);
-};
+// let lot = lotNumber;
+// let expire = date;
+// let testName = chemTestName;
+// console.log(testName);
+// let shortName = chemTestShortName;
+// let flexPerBox = flexBox;
+// let numOfBoxs = boxNumber;
+// let methodData = {
+//     method: 'POST',
+    // headers: {
+    //   'Content-Type': 'application/json',
+  // }
+// }
+
+// fetch('/add/' + testName + '.' + shortName + '.' + expire + '.' + lot + '.' + flexPerBox + '.' + numOfBoxs, methodData )
+
+  
 
 getTestInfoIm.onclick = function getInfoIm() {
   boxNumberIm = document.querySelector("#numberBoxsIm").value;
+
+
 
   let addInfoIm = {
     "lot": lotNumberIm,

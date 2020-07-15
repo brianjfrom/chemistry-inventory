@@ -42,7 +42,7 @@
       "flexPerBox": 4
     },
     {
-      "name": "Total Protein",
+      "name": "Total_Protein",
       "shName": "TP",
       "refChem": "11097604",
       "flexPerBox": 4

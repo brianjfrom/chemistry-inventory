@@ -1,15 +1,15 @@
 let fs = require('fs');
 let data = fs.readFileSync('reagent.json');
 let reagents = JSON.parse(data);
-console.log(reagents);
 let inventorySheet = fs.readFileSync('inventory.json');
 let inventory = JSON.parse(inventorySheet);
 
-console.log(inventory);
+// console.log(inventory);
 
 console.log('starting server');
 let express = require('express');
 const { finished } = require('stream');
+const { json } = require('express');
 let app = express();
 
 let server = app.listen(3000, listen)
@@ -20,7 +20,7 @@ function listen() {
 
 app.use(express.static('chemistry'));
 
-app.get('/add/:TestName.:shortName.:expireDate.:lot.:flexPerBox.:numOfBoxs', addArray);
+app.post('/add/:TestName.:shortName.:expireDate.:lot.:flexPerBox.:numOfBoxs', addArray);
 
 let nuumOfBoxs = ""
 function addArray(req, res) {
@@ -56,7 +56,12 @@ function addArray(req, res) {
         let calNum = originalNumber + newNumber;
         console.log(calNum, "cal num of box")
 
-        inventory.splice(index);
+        let spliceIndex = inventory.splice([index]);
+        fs.writeFile('inventory.json', JSON.stringify(spliceIndex, null, 2), err =>{
+            if (err) throw err;
+            console.log(inventory)
+        })
+        console.log([index], 'splice index number')
         let addToInventory = {
             "testName": testName,
             "shortName": shortName,
@@ -65,12 +70,13 @@ function addArray(req, res) {
             "flexPerBox": flexPerBox,
             "numOfBoxs": calNum
         }
-        inventory.push(addToInventory);
-        fs.writeFile('inventory.json', JSON.stringify(inventory, null, 2), err =>{
+        console.log([index], 'index after splice');
+        // inventory.push(addToInventory);
+        fs.writeFile('inventory.json', JSON.stringify(addToInventory, null, 2), err =>{
         if (err) throw err;
         res.send("Number of Boxs updated")
     });
-    } else if ([index === -1]){
+    } else if ([index] === -1){
         inventory.push(newInventory);
         fs.writeFile('inventory.json', JSON.stringify(inventory, null, 2), err =>{
         if (err) throw err;
