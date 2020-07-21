@@ -10,6 +10,11 @@
 
 <body>
   <h1>Chemisty Inventory</h1>
+  <header>
+    <a class="active" href="#">Add to Inventory</a>
+    <a href="./Remove/remove.html">Remove from Inventory</a>
+    <a href="#">Inventory List</a>
+  </header>
   <div class="barcode_scan">
     <div class="chem_barcode">
       <h2>CH Reagents Only</h2>
@@ -24,7 +29,7 @@
         Number of boxes: <input type="number" id="numberBoxs" placeholder='"20"' val="" required>
         <br>
         <button id="addInventory">Add to Inventory</button>
-        
+        <p class="note"></p>
       </div>
     </div>
     <div class="Im_barcode">
@@ -38,9 +43,27 @@
         <p class="test_name_im">Test Name: <span id="test_name_im"></span> </p>
         <p class="number_boxs_im">Kits Per Box: <span id="flexPerBoxIm"></span></p>
         Number of boxes: <input type="number" id="numberBoxsIm" placeholder='"10"' val="" required>
+        <br>
         <button id="addInventoryIm">Add to Inventory</button>
+        <p class="noteIm"></p>
         
       </div>
+      </div>
+      <div class="cal_barcode">
+        <h2>Calibrators Only</h2>
+                    Scan Barcode: <br> <input type="text" class="barcodeNumberCal" value="0100630414597379109LD0421720120124011099335422840">
+        <button type="submit" class="bcnSubmitCal">Submit</button>
+        <div class="cal_barcode__data">
+          <p class="reference_number">Reference Number: <span id="refNumCal"></span></p>
+          <p class="lot_number">Lot Number: <span id="lotNumberCal"></span></p>
+          <p class="expire_date">Expire Date: <span id="exDateCal"></span></p>
+          <p class="test_name">Test Name: <span id="test_nameCal"></span> </p>
+          <p class="flex_per_box">Kits Per Box: <span id="flexPerBoxCal"></span></p>
+          Number of boxes: <input type="number" id="numberBoxsCal" placeholder='"20"' val="" required>
+          <br>
+          <button id="addInventoryCal">Add to Inventory</button>
+          <p class="noteCal"></p>
+        </div>
       </div>
     </div>
   </div>

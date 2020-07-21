@@ -1,0 +1,51 @@
+<!-- <!DOCTYPE html> -->
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Remove Tests</title>
+  <link rel="stylesheet" href="./remove.css">
+</head>
+
+<body>
+  <h1>Chemisty Inventory</h1>
+  <header>
+    <a href="../index.html">Add to Inventory</a>
+    <a class="active" href="#">Remove from Inventory</a>
+    <a href="#">Inventory List</a>
+  </header>
+  <div class="barcode_scan">
+    <div class="chem_barcode">
+      <h2>CH Reagents Only</h2>
+      Scan Barcode: <br> <input type="number" class="barcodeNumber"
+        value="0100630414596372102910531721030124011097604422826">
+      <button type="submit" class="bcnSubmit">Submit</button>
+      <div class="barcode__data">
+        <p class="reference_number">Reference Number: <span id="refNum"></span></p>
+        <p class="lot_number">Lot Number: <span id="lotNumber"></span></p>
+        <p class="expire_date">Expire Date: <span id="exDate"></span></p>
+        <p class="test_name">Test Name: <span id="test_name"></span> </p>
+        <p class="flex_per_box">Kits Per Box: <span id="flexPerBox"></span></p>
+        <p class="note"></p>
+      </div>
+    </div>
+    <div class="IM_barcode">
+      <h2>IM Reagents Only</h2>
+      Scan Barcode: <br> <input type="number" class="barcodeNumberIM"
+            value="010063041460039010226832511720113024010995459422840">
+      <button type="submit" class="bcnSubmitIM">Submit</button>
+      <div class="barcode__dataIM">
+        <p class="reference_numberIM">Reference Number: <span id="refNumIM"></span></p>
+        <p class="lot_numberIM">Lot Number: <span id="lotNumberIM"></span></p>
+        <p class="expire_dateIM">Expire Date: <span id="exDateIM"></span></p>
+        <p class="test_nameIM">Test Name: <span id="test_nameIM"></span> </p>
+        <p class="flex_per_boxIM">Kits Per Box: <span id="flexPerBoxIM"></span></p>
+        <p class="noteIM"></p>
+      </div>
+    </div>
+  </div>
+  <script src="./remove.js"></script>
+</body>
+
+</html>
