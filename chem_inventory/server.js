@@ -8,8 +8,8 @@ let inventory = JSON.parse(inventorySheet);
 
 console.log('starting server');
 let express = require('express');
-const { finished } = require('stream');
-const { json } = require('express');
+// const { finished } = require('stream');
+// const { json } = require('express');
 let app = express();
 
 let server = app.listen(3000, listen)
@@ -20,9 +20,8 @@ function listen() {
 
 app.use(express.static('chemistry'));
 
-app.post('/add/:TestName.:shortName.:expireDate.:lot.:flexPerBox.:numOfBoxs', addArray);
+app.post('/add/:TestName.:shortName.:expireDate.:lot.:flexPerBox.:numOfBoxs.:pkgType', addArray);
 
-let nuumOfBoxs = ""
 function addArray(req, res) {
     let data = req.params;
     let testName = data.TestName;
@@ -30,11 +29,13 @@ function addArray(req, res) {
     let expireDate = data.expireDate;
     let lot = data.lot;
     let flexPerBox = Number(data.flexPerBox);
-    numOfBoxs = Number(data.numOfBoxs);
+    let numOfBoxs = Number(data.numOfBoxs);
+    let type = data.pkgType;
 
     let newInventory = {
         "testName": testName,
         "shortName": shortName,
+        "pkgType": type,
         "expireDate": expireDate,
         "lot": lot,
         "flexPerBox": flexPerBox,
@@ -44,57 +45,94 @@ function addArray(req, res) {
     index = inventory.findIndex(function (lots, index) {
         return lots.lot === lot; 
     });
-    console.log(index)
     if ([index] >= 0) {
-        console.log(numOfBoxs, "numOfBoxs");
         let newNumber = numOfBoxs;
-        console.log(numOfBoxs);  
         let originalNumber = inventory[index].numOfBoxs;
-        console.log(originalNumber, "orig of boxs");
-        
-        console.log(newNumber, "new num of box")
         let calNum = originalNumber + newNumber;
-        console.log(calNum, "cal num of box")
 
-        let spliceIndex = inventory.splice([index]);
-        fs.writeFile('inventory.json', JSON.stringify(spliceIndex, null, 2), err =>{
+        inventory.splice([index], 1);
+        fs.writeFile('inventory.json', JSON.stringify(inventory, null, 2), err =>{
             if (err) throw err;
-            console.log(inventory)
         })
-        console.log([index], 'splice index number')
         let addToInventory = {
             "testName": testName,
             "shortName": shortName,
+            "pkgType": type,
             "expireDate": expireDate,
             "lot": lot,
             "flexPerBox": flexPerBox,
             "numOfBoxs": calNum
         }
-        console.log([index], 'index after splice');
-        // inventory.push(addToInventory);
-        fs.writeFile('inventory.json', JSON.stringify(addToInventory, null, 2), err =>{
+        inventory.push(addToInventory);
+        fs.writeFile('inventory.json', JSON.stringify(inventory, null, 2), err =>{
         if (err) throw err;
+        console.log(testName, newNumber, "Boxes Added", new Date().toLocaleDateString());
         res.send("Number of Boxs updated")
     });
-    } else if ([index] === -1){
+    } else {
         inventory.push(newInventory);
         fs.writeFile('inventory.json', JSON.stringify(inventory, null, 2), err =>{
         if (err) throw err;
+        console.log(testName, "New lot Added", new Date().toLocaleDateString());
         res.send("Inventory Added");
     });
-    // } else {
-    //     res.send("unable to send to inventory at this time");
     }
 };
     
+app.post('/remove/:TestName.:shortName.:expireDate.:lot.:flexPerBox.:numOfBoxs.:pkgType', removeArray)
 
+function removeArray(req, res) {
+    let data = req.params;
+    let testName = data.TestName;
+    let shortName = data.shortName;
+    let expireDate = data.expireDate;
+    let lot = data.lot;
+    let flexPerBox = Number(data.flexPerBox);
+    let numOfBoxs = Number(data.numOfBoxs);
+    let type = data.pkgType;
+
+    let newInventory = {
+        "testName": testName,
+        "shortName": shortName,
+        "pkgType": type,
+        "expireDate": expireDate,
+        "lot": lot,
+        "flexPerBox": flexPerBox,
+        "numOfBoxs": numOfBoxs
+    };
+    index = inventory.findIndex(function (lots, index) {
+        return lots.lot === lot; 
+    });
+    console.log(index);
+    let originalNumber = inventory[index].numOfBoxs;
+    let fixedNumber = originalNumber - 1;
+
+    inventory.splice([index], 1);
+        fs.writeFile('inventory.json', JSON.stringify(inventory, null, 2), err =>{
+            if (err) throw err;
+        })
+        let addToInventory = {
+            "testName": testName,
+            "shortName": shortName,
+            "pkgType": type,
+            "expireDate": expireDate,
+            "lot": lot,
+            "flexPerBox": flexPerBox,
+            "numOfBoxs": fixedNumber
+        }
+        inventory.push(addToInventory);
+        fs.writeFile('inventory.json', JSON.stringify(inventory, null, 2), err =>{
+        if (err) throw err;
+        console.log(testName, "Box removed", new Date().toLocaleDateString());
+    });
+    res.send("Number of Boxs updated")
+}
     
 
 app.get('/all', getAll); 
 
 function getAll(req, res) {
     res.send(reagents);
-    console.log(reagents);
 };
 
 app.get('/inventory', getInventory);
