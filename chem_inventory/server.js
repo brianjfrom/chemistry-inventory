@@ -22,7 +22,7 @@ app.use(express.static('chemistry'));
 
 app.post('/add/:TestName.:shortName.:expireDate.:lot.:flexPerBox.:numOfBoxs.:pkgType', addArray);
 
-function addArray(req, res) {
+async function addArray(req, res) {
     let data = req.params;
     let testName = data.TestName;
     let shortName = data.shortName;
@@ -63,14 +63,14 @@ function addArray(req, res) {
             "flexPerBox": flexPerBox,
             "numOfBoxs": calNum
         }
-        inventory.push(addToInventory);
+        await inventory.unshift(addToInventory);
         fs.writeFile('inventory.json', JSON.stringify(inventory, null, 2), err =>{
         if (err) throw err;
         console.log(testName, newNumber, "Boxes Added", new Date().toLocaleDateString());
         res.send("Number of Boxs updated")
     });
     } else {
-        inventory.push(newInventory);
+        await inventory.push(newInventory);
         fs.writeFile('inventory.json', JSON.stringify(inventory, null, 2), err =>{
         if (err) throw err;
         console.log(testName, "New lot Added", new Date().toLocaleDateString());
@@ -81,7 +81,7 @@ function addArray(req, res) {
     
 app.post('/remove/:TestName.:shortName.:expireDate.:lot.:flexPerBox.:numOfBoxs.:pkgType', removeArray)
 
-function removeArray(req, res) {
+async function removeArray(req, res) {
     let data = req.params;
     let testName = data.TestName;
     let shortName = data.shortName;
@@ -120,7 +120,7 @@ function removeArray(req, res) {
             "flexPerBox": flexPerBox,
             "numOfBoxs": fixedNumber
         }
-        inventory.push(addToInventory);
+        await inventory.unshift(addToInventory);
         fs.writeFile('inventory.json', JSON.stringify(inventory, null, 2), err =>{
         if (err) throw err;
         console.log(testName, "Box removed", new Date().toLocaleDateString());

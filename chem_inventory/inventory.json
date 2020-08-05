@@ -6,7 +6,43 @@
     "expireDate": "03-16-21",
     "lot": "100054",
     "flexPerBox": 4,
-    "numOfBoxs": 8
+    "numOfBoxs": 9
+  },
+  {
+    "testName": "DIGOXIN",
+    "shortName": "Dig",
+    "pkgType": "IM Reagent",
+    "expireDate": "10-09-20",
+    "lot": "92985233",
+    "flexPerBox": 1,
+    "numOfBoxs": 12
+  },
+  {
+    "testName": "CHEM III CAL",
+    "shortName": "CHEM III CAL",
+    "pkgType": "Calibrator",
+    "expireDate": "12-01-20",
+    "lot": "9LD042",
+    "flexPerBox": 1,
+    "numOfBoxs": 7
+  },
+  {
+    "testName": "AST",
+    "shortName": "AST",
+    "pkgType": "CH Reagent",
+    "expireDate": "10-01-20",
+    "lot": "291103",
+    "flexPerBox": 3,
+    "numOfBoxs": 5
+  },
+  {
+    "testName": "CK-MB",
+    "shortName": "CKMB",
+    "pkgType": "IM Reagent",
+    "expireDate": "01-13-21",
+    "lot": "06171235",
+    "flexPerBox": 1,
+    "numOfBoxs": 4
   },
   {
     "testName": "BUN",
@@ -18,13 +54,31 @@
     "numOfBoxs": 4
   },
   {
-    "testName": "CK-MB",
-    "shortName": "CKMB",
+    "testName": "TOTAL PROTEIN",
+    "shortName": "TP",
     "pkgType": "CH Reagent",
-    "expireDate": "01-13-21",
-    "lot": "06171235",
-    "flexPerBox": 1,
-    "numOfBoxs": 5
+    "expireDate": "03-01-21",
+    "lot": "291053",
+    "flexPerBox": 4,
+    "numOfBoxs": 7
+  },
+  {
+    "testName": "TOTAL BILIRUBIN",
+    "shortName": "TBIL_2",
+    "pkgType": "CH Reagent",
+    "expireDate": "04-12-21",
+    "lot": "100008",
+    "flexPerBox": 4,
+    "numOfBoxs": 8
+  },
+  {
+    "testName": "MAGNESIUM",
+    "shortName": "MG",
+    "pkgType": "CH Reagent",
+    "expireDate": "04-01-21",
+    "lot": "201138",
+    "flexPerBox": 3,
+    "numOfBoxs": 7
   },
   {
     "testName": "TOX CAL 4",
@@ -43,41 +97,5 @@
     "lot": "9MD061",
     "flexPerBox": 1,
     "numOfBoxs": 2
-  },
-  {
-    "testName": "DIGOXIN",
-    "shortName": "Dig",
-    "pkgType": "IM Reagent",
-    "expireDate": "10-09-20",
-    "lot": "92985233",
-    "flexPerBox": 1,
-    "numOfBoxs": 8
-  },
-  {
-    "testName": "CHEM III CAL",
-    "shortName": "CHEM III CAL",
-    "pkgType": "Calibrator",
-    "expireDate": "12-01-20",
-    "lot": "9LD042",
-    "flexPerBox": 1,
-    "numOfBoxs": 4
-  },
-  {
-    "testName": "AST",
-    "shortName": "AST",
-    "pkgType": "CH Reagent",
-    "expireDate": "10-01-20",
-    "lot": "291103",
-    "flexPerBox": 3,
-    "numOfBoxs": 7
-  },
-  {
-    "testName": "TOTAL PROTEIN",
-    "shortName": "TP",
-    "pkgType": "CH Reagent",
-    "expireDate": "03-01-21",
-    "lot": "291053",
-    "flexPerBox": 4,
-    "numOfBoxs": 8
   }
 ]
