@@ -158,6 +158,6 @@ fetch('../all').then(Response => Response.json())
         document.querySelector(".barcodeNumberIM").value = "";
         document.querySelector('.noteIM').innerHTML = '"Box Removed From Inventoy"'
         document.querySelector('.noteIM').style.color = "red";
-      }, 3000)
+      }, 2000)
     }
   });
