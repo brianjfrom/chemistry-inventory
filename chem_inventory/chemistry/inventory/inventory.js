@@ -1,9 +1,59 @@
 const inventoryContainer = document.querySelector('.inventory-data');
-const inventoryTemplate = document.querySelector('.data-inventory-template');
+// const inventoryTemplate = document.querySelector('.data-inventory-template');
 
 
 getData().then(invData => {
     console.log(invData);
+
+    
+    function exDate(expireDate) {
+        let d1 = new Date();
+        let d2 = new Date(expireDate);
+        let calDate = Math.abs(d2 - d1);
+        let calDateCor = (calDate / 86400000).toFixed(0);
+        // console.log(calDateCor);
+        if (calDateCor < 30) {
+          return expireDate.bold().fontcolor("darkred");
+        } else if (calDateCor < 60) {
+          return expireDate.bold().fontcolor("forestgreen");
+        } else {
+          return expireDate;
+        }
+      }
+  
+      function addBoxs(numOfBoxs) {
+        // console.log(numOfBoxs);
+        let boxs = numOfBoxs;
+        let boxFixed = boxs.toString()
+        if (boxs <= 1) {
+          alert("Check inventory, reagent needs to be ordered now.");
+          return boxFixed.bold().fontcolor('red')
+        } else if (boxs <= 2) {
+          return boxFixed.bold().fontcolor('red')
+        }else if (boxs <= 3) {
+          return boxFixed.bold().fontcolor('forestgreen')
+        } else {
+          return boxs;
+        }
+      }
+    
+    function inventoryTemplate(test) {
+        return `
+      <div class="grid-body">
+        <p id="data-type">${test.pkgType}</p>
+        <p id="data-fullname">${test.testName}</p>
+        <p id="data-shortname">${test.shortName}</p>
+        <p id="data-expire-date">${exDate(test.expireDate)}</p>
+        <p id="data-lot">${test.lot}</p>
+        <p id="data-number-boxs">${addBoxs(test.numOfBoxs)}</p>
+        <p id="data-partnumber>${test.partNumber}</p>
+  </div>  
+  `;
+      }
+
+    inventoryContainer.innerHTML = `${invData
+        .map(inventoryTemplate)
+        .join("")}`;
 })
 
 function displayDate(date) {
@@ -21,24 +71,6 @@ function displayDate(date) {
             let textB = b.testName.toUpperCase();
             return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
         });
-        // console.log(testData);
-        
     })
 }
 
-function defineArray(ary) {
-    const selectedArray = ary[index];
-}
-            
-            // newInventoryContainer.querySelector('#data-fullname').innerText = testData.testName;
-            // newInventoryContainer.querySelector('#data-shortname').innerText = testData.shortName;
-            // newInventoryContainer.querySelector('#data-expire-date').innerText = testData.expireDate;
-            // newInventoryContainer.querySelector('#data-lot').innerText = testData.lot;
-            // newInventoryContainer.querySelector('#dataType-number-boxs').innerText = testData.numOfBoxs;
-
-            // function displayInventoryData() {
-            //     for (let key = 0; key < testData.length; key++) {
-            //         let newInventoryContainer = inventoryTemplate.textContent.cloneNode(true);
-            //         newInventoryContainer.querySelector('#data-type').innerHTML = key.pkgType;
-            //     }  
-            // }      

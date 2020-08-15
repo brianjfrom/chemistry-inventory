@@ -20,7 +20,7 @@ function listen() {
 
 app.use(express.static('chemistry'));
 
-app.post('/add/:TestName.:shortName.:expireDate.:lot.:flexPerBox.:numOfBoxs.:pkgType', addArray);
+app.post('/add/:TestName.:shortName.:expireDate.:lot.:flexPerBox.:numOfBoxs.:pkgType.:partNumber', addArray);
 
 async function addArray(req, res) {
     let data = req.params;
@@ -31,6 +31,7 @@ async function addArray(req, res) {
     let flexPerBox = Number(data.flexPerBox);
     let numOfBoxs = Number(data.numOfBoxs);
     let type = data.pkgType;
+    let partNumber = data.partNumber
 
     let newInventory = {
         "testName": testName,
@@ -39,7 +40,8 @@ async function addArray(req, res) {
         "expireDate": expireDate,
         "lot": lot,
         "flexPerBox": flexPerBox,
-        "numOfBoxs": numOfBoxs
+        "numOfBoxs": numOfBoxs,
+        "partNumber": partNumber
     };
     
     index = inventory.findIndex(function (lots, index) {
@@ -61,7 +63,8 @@ async function addArray(req, res) {
             "expireDate": expireDate,
             "lot": lot,
             "flexPerBox": flexPerBox,
-            "numOfBoxs": calNum
+            "numOfBoxs": calNum,
+            "partNumber": partNumber
         }
         await inventory.unshift(addToInventory);
         fs.writeFile('inventory.json', JSON.stringify(inventory, null, 2), err =>{

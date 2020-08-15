@@ -72,7 +72,8 @@ fetch('all').then(Response => Response.json())
         flexBox = reagentData[index].flexPerBox;
         document.querySelector("#flexPerBox").innerHTML = flexBox;
         type = reagentData[index].type;
-
+        reference = reagentData[index].refChem
+        console.log(reference);
       }
     };
     getTestInfo.onclick = function getInfo() {
@@ -86,6 +87,7 @@ fetch('all').then(Response => Response.json())
       let flexPerBox = flexBox;
       let numOfBoxs = boxNumber;
       let pkgType = type;
+      let partNumber = reference;
       let methodData = {
         method: 'POST',
         credentials: 'same-origin',
@@ -94,7 +96,7 @@ fetch('all').then(Response => Response.json())
         }
       }
 
-      fetch('/add/' + testName + '.' + shortName + '.' + expire + '.' + lot + '.' + flexPerBox + '.' + numOfBoxs + "." + pkgType, methodData)
+      fetch('/add/' + testName + '.' + shortName + '.' + expire + '.' + lot + '.' + flexPerBox + '.' + numOfBoxs + "." + pkgType + "."  + partNumber, methodData)
         .then(response => {
           console.log(response)
         })

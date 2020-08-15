@@ -1,12 +1,63 @@
 [
   {
+    "testName": "MAGNESIUM",
+    "shortName": "MG",
+    "pkgType": "CH Reagent",
+    "expireDate": "04-01-21",
+    "lot": "201138",
+    "flexPerBox": 3,
+    "numOfBoxs": 10,
+    "partNumber": "11097612"
+  },
+  {
+    "testName": "AST",
+    "shortName": "AST",
+    "pkgType": "CH Reagent",
+    "expireDate": "10-01-20",
+    "lot": "291103",
+    "flexPerBox": 3,
+    "numOfBoxs": 9,
+    "partNumber": "11097607"
+  },
+  {
+    "testName": "TOTAL PROTEIN",
+    "shortName": "TP",
+    "pkgType": "CH Reagent",
+    "expireDate": "03-01-21",
+    "lot": "291053",
+    "flexPerBox": 4,
+    "numOfBoxs": 9,
+    "partNumber": "11097604"
+  },
+  {
+    "testName": "TOTAL BILIRUBIN",
+    "shortName": "TBIL_2",
+    "pkgType": "CH Reagent",
+    "expireDate": "04-12-21",
+    "lot": "100008",
+    "flexPerBox": 4,
+    "numOfBoxs": 21,
+    "partNumber": "11097531"
+  },
+  {
+    "testName": "BUN",
+    "shortName": "UN_c",
+    "pkgType": "CH Reagent",
+    "expireDate": "03-01-21",
+    "lot": "291055",
+    "flexPerBox": 4,
+    "numOfBoxs": 18,
+    "partNumber": "11097593"
+  },
+  {
     "testName": "ALBUMIN",
     "shortName": "AlbP",
     "pkgType": "CH Reagent",
     "expireDate": "03-16-21",
     "lot": "100054",
     "flexPerBox": 4,
-    "numOfBoxs": 9
+    "numOfBoxs": 16,
+    "partNumber": "11097530"
   },
   {
     "testName": "DIGOXIN",
@@ -27,15 +78,6 @@
     "numOfBoxs": 7
   },
   {
-    "testName": "AST",
-    "shortName": "AST",
-    "pkgType": "CH Reagent",
-    "expireDate": "10-01-20",
-    "lot": "291103",
-    "flexPerBox": 3,
-    "numOfBoxs": 5
-  },
-  {
     "testName": "CK-MB",
     "shortName": "CKMB",
     "pkgType": "IM Reagent",
@@ -43,42 +85,6 @@
     "lot": "06171235",
     "flexPerBox": 1,
     "numOfBoxs": 4
-  },
-  {
-    "testName": "BUN",
-    "shortName": "UN_c",
-    "pkgType": "CH Reagent",
-    "expireDate": "03-01-21",
-    "lot": "291055",
-    "flexPerBox": 4,
-    "numOfBoxs": 4
-  },
-  {
-    "testName": "TOTAL PROTEIN",
-    "shortName": "TP",
-    "pkgType": "CH Reagent",
-    "expireDate": "03-01-21",
-    "lot": "291053",
-    "flexPerBox": 4,
-    "numOfBoxs": 7
-  },
-  {
-    "testName": "TOTAL BILIRUBIN",
-    "shortName": "TBIL_2",
-    "pkgType": "CH Reagent",
-    "expireDate": "04-12-21",
-    "lot": "100008",
-    "flexPerBox": 4,
-    "numOfBoxs": 8
-  },
-  {
-    "testName": "MAGNESIUM",
-    "shortName": "MG",
-    "pkgType": "CH Reagent",
-    "expireDate": "04-01-21",
-    "lot": "201138",
-    "flexPerBox": 3,
-    "numOfBoxs": 7
   },
   {
     "testName": "TOX CAL 4",
@@ -97,5 +103,25 @@
     "lot": "9MD061",
     "flexPerBox": 1,
     "numOfBoxs": 2
+  },
+  {
+    "testName": "HEMOGLOBIN A1C",
+    "shortName": "Hem A1c_E",
+    "pkgType": "CH Reagent",
+    "expireDate": "07-08-20",
+    "lot": "190253",
+    "flexPerBox": 2,
+    "numOfBoxs": 3,
+    "partNumber": "11097536"
+  },
+  {
+    "testName": "VALPROIC ACID",
+    "shortName": "VPA(VALP)",
+    "pkgType": "CH Reagent",
+    "expireDate": "01-19-21",
+    "lot": "100011",
+    "flexPerBox": 4,
+    "numOfBoxs": 3,
+    "partNumber": "11097512"
   }
 ]
