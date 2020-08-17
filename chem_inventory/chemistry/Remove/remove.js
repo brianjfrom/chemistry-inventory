@@ -7,34 +7,15 @@ function displayDate(date) {
 
 let getBarcode = document.querySelector(".bcnSubmit");
 let getBarcodeIm = document.querySelector(".bcnSubmitIM");
-// let getBarcodeCal = document.querySelector('.bcnSubmitCal');
 let barcode = document.querySelector(".barcodeNumber").value;
 let barcodeIM = document.querySelector(".barcodeNumberIM").value;
-// let barcodeCal = document.querySelector(".barcodeNumberCal").value;
-// let lotNumber = barcode.slice(18, 24);
-// let lotNumberIm = barcodeIm.slice(18, 26);
-// let expDateString = barcode.slice(26, 32);
-// let refNumber = barcode.slice(35, 43);
-// let refNumberIm = barcodeIm.slice(37, 45);
-// let month = expDateString.slice(2, 4);
-// let day = expDateString.slice(4, 7);
-// let year = expDateString.slice(0, 2);
-// let date = `${month}/${day}/${year}`;
-// let expireDate = new Date(date);
-// let expDateStringIm = barcodeIm.slice(28, 34);
-// let monthIm = expDateStringIm.slice(2, 4);
-// let dayIm = expDateStringIm.slice(4, 7);
-// let yearIm = expDateStringIm.slice(0, 2);
-// let dateIm = `${monthIm}/${dayIm}/${yearIm}`;
-// let expireDateIm = new Date(dateIm);
+let getBarcodeCal = document.querySelector('.bcnSubmitCal');
+let barcodeCal = document.querySelector('.barcodeNumberCal').value;
 
 
 fetch('../all').then(Response => Response.json())
   .then((reagentData) => {
-    // let index = reagentData.findIndex(function (refChems, index) {
-    //   return refChems.refChem == refNumber;
-    // });
-    getBarcode.onclick = function getData() {
+      getBarcode.onclick = function getData() {
       barcode = document.querySelector(".barcodeNumber").value;
       let globalTradeNumber = barcode.slice(2, 16);
       lotNumber = barcode.slice(18, 24);
@@ -63,6 +44,7 @@ fetch('../all').then(Response => Response.json())
       flexBox = reagentData[index].flexPerBox;
       document.querySelector("#flexPerBox").innerHTML = flexBox;
       type = reagentData[index].type;
+      reference = reagentData[index].refChem;
 
       setTimeout(function getInfo() {
         boxNumber = 1;
@@ -75,6 +57,7 @@ fetch('../all').then(Response => Response.json())
         let flexPerBox = reagentData[index].flexPerBox;
         let numOfBoxs = boxNumber;
         let pkgType = reagentData[index].type;
+        let partNumber = reference;
         let methodData = {
           method: 'POST',
           credentials: 'same-origin',
@@ -82,7 +65,7 @@ fetch('../all').then(Response => Response.json())
             'Content-Type': 'application/json'
           }
         }
-        fetch('/remove/' + testName + '.' + shortName + '.' + expire + '.' + lot + '.' + flexPerBox + '.' + numOfBoxs + "." + pkgType, methodData)
+        fetch('/remove/' + testName + '.' + shortName + '.' + expire + '.' + lot + '.' + flexPerBox + '.' + numOfBoxs + "." + pkgType + "." + partNumber, methodData)
           .then(response => {
             console.log(response)
           })
@@ -98,7 +81,10 @@ fetch('../all').then(Response => Response.json())
       }, 3000)
     }
     getBarcodeIm.onclick = function getDataIm() {
-      barcodeIm = document.querySelector(".barcodeNumberIM").value;
+      barcodeImNotFixed = document.querySelector(".barcodeNumberIM").value;
+      barcodeIm = barcodeImNotFixed.replace( /\\/g, "");
+
+      // barcodeIm = document.querySelector(".barcodeNumberIM").value;
       let globalTradeNumberIm = barcodeIm.slice(2, 16);
       lotNumberIm = barcodeIm.slice(18, 26);
       expDateStringIm = barcodeIm.slice(28, 34);
@@ -126,6 +112,7 @@ fetch('../all').then(Response => Response.json())
       flexBoxIm = reagentData[indexIm].flexPerBox;
       document.querySelector("#flexPerBoxIM").innerHTML = flexBoxIm;
       typeIm = reagentData[indexIm].type;
+      referenceIm = reagentData[indexIm].refChem
 
       setTimeout(function getInfoIm() {
         boxNumberIm = 1;
@@ -137,7 +124,8 @@ fetch('../all').then(Response => Response.json())
         let shortNameIm = reagentData[indexIm].shName;
         let flexPerBoxIm = reagentData[indexIm].flexPerBox;
         let numOfBoxsIm = boxNumberIm;
-        let pkgTypeIm = reagentData[indexIm].typeIm;
+        let pkgTypeIm = typeIm;
+        let partNumberIm = referenceIm;
         let methodDataIm = {
           method: 'POST',
           credentials: 'same-origin',
@@ -145,7 +133,7 @@ fetch('../all').then(Response => Response.json())
             'Content-Type': 'application/json'
           }
         }
-        fetch('/remove/' + testNameIm + '.' + shortNameIm + '.' + expireIm + '.' + lotIm + '.' + flexPerBoxIm + '.' + numOfBoxsIm + "." + pkgTypeIm, methodDataIm)
+        fetch('/remove/' + testNameIm + '.' + shortNameIm + '.' + expireIm + '.' + lotIm + '.' + flexPerBoxIm + '.' + numOfBoxsIm + "." + pkgTypeIm + "." + partNumberIm, methodDataIm)
           .then(response => {
             console.log(response)
           })
@@ -160,4 +148,80 @@ fetch('../all').then(Response => Response.json())
         document.querySelector('.noteIM').style.color = "red";
       }, 2000)
     }
+    getBarcodeCal.onclick = function getDataCal() {
+      barcodeCalNotFixed = document.querySelector(".barcodeNumberCal").value;
+      barcodeCal = barcodeCalNotFixed.replace( /\\/g, "");
+      console.log(barcodeCal);
+      let globalTradeNumberCal = barcodeCal.slice(2, 16);
+      console.log(globalTradeNumberCal, "GTN");
+      lotNumberCal = barcodeCal.slice(18, 24);
+      console.log(lotNumberCal, 'lot');
+      expDateStringCal = barcodeCal.slice(26, 32);
+      console.log(expDateStringCal, 'exdate string');
+      monthCal = expDateStringCal.slice(2, 4);
+      console.log(monthCal, 'mon');
+      dayCal = expDateStringCal.slice(4, 7);
+      console.log(dayCal, 'day');
+      yearCal = expDateStringCal.slice(0, 2);
+      console.log(yearCal, 'year');
+      dateCal = `${monthCal}-${dayCal}-${yearCal}`;
+      console.log(dateCal, 'date');
+      expireDateCal = new Date(dateCal);
+      refNumberCal = barcodeCal.slice(35, 43);
+      console.log(refNumberCal, 'refnumber')
+      // console.log(lotNumberIm);
+      // console.log(expireDateIm);
+      document.querySelector("#refNumCal").innerHTML = refNumberCal;
+      document.querySelector("#lotNumberCal").innerHTML = lotNumberCal;
+      document.querySelector("#exDateCal").innerHTML = displayDate(expireDateCal);
+      document.querySelector('.noteCal').innerHTML = "";
+  
+      let indexCal = reagentData.findIndex(function (refChemsCal, index) {
+        return refChemsCal.refChem == refNumberCal;
+      });
+      console.log(indexCal);
+  
+      chemTestNameCal = reagentData[indexCal].name.toUpperCase();
+      console.log(chemTestNameCal);
+      document.querySelector("#test_nameCal").innerHTML = chemTestNameCal;
+      chemTestShortNameCal = reagentData[indexCal].shName;
+      flexBoxCal = reagentData[indexCal].flexPerBox;
+      document.querySelector("#flexPerBoxCal").innerHTML = flexBoxCal;
+      typeCal = reagentData[indexCal].type;
+      referenceCal = reagentData[indexCal].refChem
+  
+      setTimeout(function getInfoCal() {
+        boxNumberCal = 1;
+  
+        let lotCal = lotNumberCal;
+        let expireCal = dateCal;
+        let testNameCal = reagentData[indexCal].name.toUpperCase();
+        console.log(testNameCal);
+        let shortNameCal = reagentData[indexCal].shName;
+        let flexPerBoxCal = reagentData[indexCal].flexPerBox;
+        let numOfBoxsCal = boxNumberCal;
+        let pkgTypeCal = typeCal;
+        let partNumberCal = referenceCal;
+        let methodDataCal = {
+          method: 'POST',
+          credentials: 'same-origin',
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        }
+        fetch('/remove/' + testNameCal + '.' + shortNameCal + '.' + expireCal + '.' + lotCal + '.' + flexPerBoxCal + '.' + numOfBoxsCal + "." + pkgTypeCal + "." + partNumberCal, methodDataCal)
+          .then(response => {
+            console.log(response)
+          })
+        document.querySelector("#refNumCal").innerHTML = "";
+        document.querySelector("#lotNumberCal").innerHTML = "";
+        document.querySelector("#exDateCal").innerHTML = "";
+        document.querySelector("#test_nameCal").innerHTML = "";
+        document.querySelector("#flexPerBoxCal").innerHTML = "";
+        // document.querySelector("#numberBoxs").value = "";
+        document.querySelector(".barcodeNumberCal").value = "";
+        document.querySelector('.noteCal').innerHTML = '"Box Removed From Inventoy"'
+        document.querySelector('.noteCal').style.color = "red";
+      }, 2000)
+    }  
   });

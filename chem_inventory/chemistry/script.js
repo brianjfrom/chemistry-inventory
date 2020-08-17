@@ -117,7 +117,10 @@ fetch('all').then(Response => Response.json())
       return refChems.refChem == refNumberIm;
     });
     getBarcodeIM.onclick = function getDataIM() {
-      barcodeIm = document.querySelector(".barcodeNumberIM").value;
+      let barcodeImNotFixed = document.querySelector(".barcodeNumberIM").value;
+      let barcodeIm = barcodeImNotFixed.replace( /\\/g, "");
+
+      // barcodeIm = document.querySelector(".barcodeNumberIM").value;
       let globalTradeNumberIm = barcodeIm.slice(2, 16);
       lotNumberIm = barcodeIm.slice(18, 26);
       expDateStringIm = barcodeIm.slice(28, 34);
@@ -150,13 +153,10 @@ fetch('all').then(Response => Response.json())
         console.log(flexBoxIm);
         document.querySelector('#flexPerBoxIm').innerHTML = flexBoxIm;
         typeIm = reagentData[indexIm].type
+        referenceIm = reagentData[indexIm].refChem
         console.log(typeIm);
       }
     };
-
-
-
-
 
 
     getTestInfoIm.onclick = function getInfoIm() {
@@ -170,6 +170,7 @@ fetch('all').then(Response => Response.json())
       let flexPerBoxIm = flexBoxIm;
       let numOfBoxsIm = boxNumberIm;
       let pkgTypeIm = typeIm;
+      let partNumberIm = referenceIm;
       let methodDataIm = {
         method: 'POST',
         credentials: 'same-origin',
@@ -178,7 +179,7 @@ fetch('all').then(Response => Response.json())
         }
       }
 
-      fetch('/add/' + testNameIm + '.' + shortNameIm + '.' + expireIm + '.' + lotIm + '.' + flexPerBoxIm + '.' + numOfBoxsIm + "." + pkgTypeIm, methodDataIm)
+      fetch('/add/' + testNameIm + '.' + shortNameIm + '.' + expireIm + '.' + lotIm + '.' + flexPerBoxIm + '.' + numOfBoxsIm + "." + pkgTypeIm + "." + partNumberIm, methodDataIm)
         .then(response => {
           console.log(response)
         })
@@ -237,7 +238,8 @@ fetch('all').then(Response => Response.json())
         flexBoxCal = reagentData[indexCal].flexPerBox;
         console.log(flexBoxCal);
         document.querySelector('#flexPerBoxCal').innerHTML = flexBoxCal;
-        typeCal = reagentData[indexCal].type
+        typeCal = reagentData[indexCal].type;
+        referenceCal = reagentData[indexCal].refChem;
         console.log(typeCal);
       }
     };
@@ -252,6 +254,7 @@ fetch('all').then(Response => Response.json())
       let flexPerBoxCal = flexBoxCal;
       let numOfBoxsCal = boxNumberCal;
       let pkgTypeCal = typeCal;
+      let partNumberCal = referenceCal;
       let methodDataCal = {
         method: 'POST',
         credentials: 'same-origin',
@@ -259,7 +262,7 @@ fetch('all').then(Response => Response.json())
           'Content-Type': 'application/json'
         }
       }
-      fetch('/add/' + testNameCal + '.' + shortNameCal + '.' + expireCal + '.' + lotCal + '.' + flexPerBoxCal + '.' + numOfBoxsCal + "." + pkgTypeCal, methodDataCal)
+      fetch('/add/' + testNameCal + '.' + shortNameCal + '.' + expireCal + '.' + lotCal + '.' + flexPerBoxCal + '.' + numOfBoxsCal + "." + pkgTypeCal + "." + partNumberCal, methodDataCal)
         .then(response => {
           console.log(response)
         })
@@ -273,5 +276,70 @@ fetch('all').then(Response => Response.json())
       document.querySelector('.noteCal').innerHTML = '"Inventory Added"'
       document.querySelector('.noteCal').style.color = "red";
     }
-    
+    let getBarcodeOther = document.querySelector(".bcnSubmitOther");
+    let barcodeOther = document.querySelector("barcodeNumberOther");
+    let dropDownValue = document.querySelector("#other-supplies").value;
+
+    getBarcodeOther.onclick = function getDataOther() {
+      let barcodeOther = document.querySelector(".barcodeNumberOther").value;
+      let dropDownValue = document.querySelector("#other-supplies").value;
+      console.log(dropDownValue);
+      // console.log()
+      if (dropDownValue == 5) {
+        let globalTradeNumberOther = barcodeOther.slice(2, 16);
+        let lotNumberOther = barcodeOther.slice(18, 23);
+        console.log(lotNumberOther, "lot #")
+        let expDateStringOther = barcodeOther.slice(25, 31);
+        console.log(expDateStringOther, "date string")
+        let monthOther = expDateStringOther.slice(2, 4);
+        console.log(monthOther, "month")
+        let dayOther = expDateStringOther.slice(4, 7);
+        console.log(dayOther, "day")
+        let yearOther = expDateStringOther.slice(0, 2);
+        console.log(yearOther, "year")
+        let dateOther = `${monthOther}-${dayOther}-${yearOther}`;
+        console.log(dateOther, "date")
+        let expireDateOther = new Date(dateOther);
+        let refNumberOther = barcodeOther.slice(34, 43);
+        console.log()
+        console.log(globalTradeNumberOther, "value 5");
+        document.querySelector("#refNumOther").innerHTML = refNumberOther;
+        document.querySelector("#lotNumberOther").innerHTML = lotNumberOther;
+        document.querySelector("#exDateOther").innerHTML = displayDate(expireDateOther);
+        document.querySelector('.noteOther').innerHTML = "";
+
+      } else if (dropDownValue == 9) {
+        let globalTradeNumberOther = barcodeOther.slice(2, 16);
+        let lotNumberOther = barcodeOther.slice(18, 27);
+        let expDateStringOther = barcodeOther.slice(29, 35);
+        let monthOther = expDateStringOther.slice(2, 4);
+        let dayOther = expDateStringOther.slice(4, 7);
+        let yearOther = expDateStringOther.slice(0, 2);
+        let dateOther = `${monthOther}-${dayOther}-${yearOther}`;
+        let expireDateOther = new Date(dateOther);
+        let refNumberOther = barcodeOther.slice(38, 46);
+        console.log(refNumberOther, "value 9");
+        document.querySelector("#refNumOther").innerHTML = refNumberOther;
+        document.querySelector("#lotNumberOther").innerHTML = lotNumberOther;
+        document.querySelector("#exDateOther").innerHTML = displayDate(expireDateOther);
+        document.querySelector('.noteOther').innerHTML = "";
+
+      } else if (dropDownValue == 10) {
+        let globalTradeNumberOther = barcodeOther.slice(2, 16);
+        let lotNumberOther = barcodeOther.slice(18, 28);
+        let expDateStringOther = barcodeOther.slice(30, 36);
+        let monthOther = expDateStringOther.slice(2, 4);
+        let dayOther = expDateStringOther.slice(4, 7);
+        let yearOther = expDateStringOther.slice(0, 2);
+        let dateOther = `${monthOther}-${dayOther}-${yearOther}`;
+        let expireDateOther = new Date(dateOther);
+        let refNumberOther = barcodeOther.slice(39, 47);
+        console.log(refNumberOther);
+        document.querySelector("#refNumOther").innerHTML = refNumberOther;
+        document.querySelector("#lotNumberOther").innerHTML = lotNumberOther;
+        document.querySelector("#exDateOther").innerHTML = displayDate(expireDateOther);
+        document.querySelector('.noteOther').innerHTML = "";
+      }
+    };
+
   });

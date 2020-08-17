@@ -1,5 +1,75 @@
 [
   {
+    "testName": "BNP CAL",
+    "shortName": "BNP CAL",
+    "pkgType": "Calibrator",
+    "expireDate": "07-01-21",
+    "lot": "01319A77",
+    "flexPerBox": 1,
+    "numOfBoxs": 7,
+    "partNumber": "10995473"
+  },
+  {
+    "testName": "TOX CAL 4",
+    "shortName": "TOX Cal 4",
+    "pkgType": "Calibrator",
+    "expireDate": "08-31-21",
+    "lot": "73646143",
+    "flexPerBox": 1,
+    "numOfBoxs": 4,
+    "partNumber": "11099440"
+  },
+  {
+    "testName": "ENZ 2 CAL",
+    "shortName": "ENZ 2 CAL",
+    "pkgType": "Calibrator",
+    "expireDate": "12-01-20",
+    "lot": "9MD061",
+    "flexPerBox": 1,
+    "numOfBoxs": 3,
+    "partNumber": "11099318"
+  },
+  {
+    "testName": "TOTAL PROTEIN",
+    "shortName": "TP",
+    "pkgType": "CH Reagent",
+    "expireDate": "03-01-21",
+    "lot": "291053",
+    "flexPerBox": 4,
+    "numOfBoxs": 7,
+    "partNumber": "11097604"
+  },
+  {
+    "testName": "GGT",
+    "shortName": "GGT",
+    "pkgType": "CH Reagent",
+    "expireDate": "03-01-21",
+    "lot": "291077",
+    "flexPerBox": 4,
+    "numOfBoxs": 4,
+    "partNumber": "11097597"
+  },
+  {
+    "testName": "TRANSFERRIN",
+    "shortName": "Trf",
+    "pkgType": "CH Reagent",
+    "expireDate": "02-01-21",
+    "lot": "201066",
+    "flexPerBox": 4,
+    "numOfBoxs": 2,
+    "partNumber": "11097613"
+  },
+  {
+    "testName": "ALBUMIN",
+    "shortName": "AlbP",
+    "pkgType": "CH Reagent",
+    "expireDate": "03-16-21",
+    "lot": "100054",
+    "flexPerBox": 4,
+    "numOfBoxs": 15,
+    "partNumber": "11097530"
+  },
+  {
     "testName": "MAGNESIUM",
     "shortName": "MG",
     "pkgType": "CH Reagent",
@@ -18,16 +88,6 @@
     "flexPerBox": 3,
     "numOfBoxs": 9,
     "partNumber": "11097607"
-  },
-  {
-    "testName": "TOTAL PROTEIN",
-    "shortName": "TP",
-    "pkgType": "CH Reagent",
-    "expireDate": "03-01-21",
-    "lot": "291053",
-    "flexPerBox": 4,
-    "numOfBoxs": 9,
-    "partNumber": "11097604"
   },
   {
     "testName": "TOTAL BILIRUBIN",
@@ -50,71 +110,6 @@
     "partNumber": "11097593"
   },
   {
-    "testName": "ALBUMIN",
-    "shortName": "AlbP",
-    "pkgType": "CH Reagent",
-    "expireDate": "03-16-21",
-    "lot": "100054",
-    "flexPerBox": 4,
-    "numOfBoxs": 16,
-    "partNumber": "11097530"
-  },
-  {
-    "testName": "DIGOXIN",
-    "shortName": "Dig",
-    "pkgType": "IM Reagent",
-    "expireDate": "10-09-20",
-    "lot": "92985233",
-    "flexPerBox": 1,
-    "numOfBoxs": 12
-  },
-  {
-    "testName": "CHEM III CAL",
-    "shortName": "CHEM III CAL",
-    "pkgType": "Calibrator",
-    "expireDate": "12-01-20",
-    "lot": "9LD042",
-    "flexPerBox": 1,
-    "numOfBoxs": 7
-  },
-  {
-    "testName": "CK-MB",
-    "shortName": "CKMB",
-    "pkgType": "IM Reagent",
-    "expireDate": "01-13-21",
-    "lot": "06171235",
-    "flexPerBox": 1,
-    "numOfBoxs": 4
-  },
-  {
-    "testName": "TOX CAL 4",
-    "shortName": "TOX Cal 4",
-    "pkgType": "Calibrator",
-    "expireDate": "08-31-21",
-    "lot": "73646143",
-    "flexPerBox": 1,
-    "numOfBoxs": 2
-  },
-  {
-    "testName": "ENZ 2 CAL",
-    "shortName": "ENZ 2 CAL",
-    "pkgType": "Calibrator",
-    "expireDate": "12-01-20",
-    "lot": "9MD061",
-    "flexPerBox": 1,
-    "numOfBoxs": 2
-  },
-  {
-    "testName": "HEMOGLOBIN A1C",
-    "shortName": "Hem A1c_E",
-    "pkgType": "CH Reagent",
-    "expireDate": "07-08-20",
-    "lot": "190253",
-    "flexPerBox": 2,
-    "numOfBoxs": 3,
-    "partNumber": "11097536"
-  },
-  {
     "testName": "VALPROIC ACID",
     "shortName": "VPA(VALP)",
     "pkgType": "CH Reagent",
@@ -123,5 +118,45 @@
     "flexPerBox": 4,
     "numOfBoxs": 3,
     "partNumber": "11097512"
+  },
+  {
+    "testName": "HIV",
+    "shortName": "CHIV",
+    "pkgType": "IM Reagent",
+    "expireDate": "11-30-20",
+    "lot": "22683251",
+    "flexPerBox": 1,
+    "numOfBoxs": 5,
+    "partNumber": "10995459"
+  },
+  {
+    "testName": "DIGOXIN",
+    "shortName": "Dig",
+    "pkgType": "IM Reagent",
+    "expireDate": "10-09-20",
+    "lot": "92985233",
+    "flexPerBox": 1,
+    "numOfBoxs": 4,
+    "partNumber": "10995558"
+  },
+  {
+    "testName": "CK-MB",
+    "shortName": "CKMB",
+    "pkgType": "IM Reagent",
+    "expireDate": "01-13-21",
+    "lot": "06171235",
+    "flexPerBox": 1,
+    "numOfBoxs": 5,
+    "partNumber": "10995530"
+  },
+  {
+    "testName": "HEP B CORE IGM AB",
+    "shortName": "aHBcM",
+    "pkgType": "IM Reagent",
+    "expireDate": "09-09-21",
+    "lot": "24201188",
+    "flexPerBox": 1,
+    "numOfBoxs": 4,
+    "partNumber": "10995449"
   }
 ]

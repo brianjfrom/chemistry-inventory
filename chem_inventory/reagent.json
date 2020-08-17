@@ -444,7 +444,7 @@
     "shName": "Trf",
     "refChem": 11097613,
     "name": "Transferrin",
-    "type": "IM Reagent",
+    "type": "CH Reagent",
     "flexPerBox": 4
   },
   {

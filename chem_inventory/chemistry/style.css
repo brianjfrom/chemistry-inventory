@@ -42,10 +42,17 @@ grid-template-columns: 1fr 1fr;
 
 .barcodeNumber,
 .barcodeNumberIM,
-.barcodeNumberCal {
-  width: 40vw;
+.barcodeNumberCal,
+.barcodeNumberOther {
+  width: 35vw;
 }
  
 .tne {
   display: none;
+}
+#other-supplies {
+  padding: 0.5em;
+}
+#lable {
+  font-size: 1.5rem;
 }

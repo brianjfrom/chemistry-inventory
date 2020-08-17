@@ -33,13 +33,14 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
   }
-  .chem_barcode  {
+  .chem_barcode,
+  .Cal_barcode {
   padding-left: 1.5em;
   margin-top: 1em;
 }
 .barcodeNumber,
-.barcodeNumberIM
-/* .barcodeNumberCal  */
+.barcodeNumberIM,
+.barcodeNumberCal 
 {
   width: 40vw;
 }

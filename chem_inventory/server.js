@@ -82,7 +82,7 @@ async function addArray(req, res) {
     }
 };
     
-app.post('/remove/:TestName.:shortName.:expireDate.:lot.:flexPerBox.:numOfBoxs.:pkgType', removeArray)
+app.post('/remove/:TestName.:shortName.:expireDate.:lot.:flexPerBox.:numOfBoxs.:pkgType.:partNumber', removeArray)
 
 async function removeArray(req, res) {
     let data = req.params;
@@ -93,6 +93,7 @@ async function removeArray(req, res) {
     let flexPerBox = Number(data.flexPerBox);
     let numOfBoxs = Number(data.numOfBoxs);
     let type = data.pkgType;
+    let partNumber = data.partNumber
 
     let newInventory = {
         "testName": testName,
@@ -101,16 +102,33 @@ async function removeArray(req, res) {
         "expireDate": expireDate,
         "lot": lot,
         "flexPerBox": flexPerBox,
-        "numOfBoxs": numOfBoxs
+        "numOfBoxs": numOfBoxs,
+        "partNumber": partNumber
     };
     index = inventory.findIndex(function (lots, index) {
         return lots.lot === lot; 
     });
-    console.log(index);
+    // console.log(index);
     let originalNumber = inventory[index].numOfBoxs;
     let fixedNumber = originalNumber - 1;
-
-    inventory.splice([index], 1);
+    let d1 = new Date();
+    let d2 = new Date(inventory[index].expireDate);
+    let calDate = (d2 - d1);
+    let calDateCor = (calDate / 86400000).toFixed(0);
+    if (fixedNumber <= 0) {
+        inventory.splice([index], 1)
+        fs.writeFile('inventory.json', JSON.stringify(inventory, null, 2), err => {
+            if (err) throw err;
+            console.log(testName, "Lot number:", lot, "Removed from database", new Date().toLocaleDateString());
+        })
+    }else if (calDateCor <= 0) {
+        inventory.splice([index], 1)
+        fs.writeFile('inventory.json', JSON.stringify(inventory, null, 2), err => {
+            if (err) throw err;
+            console.log(testName, "Lot number:", lot, "Removed from database", new Date().toLocaleDateString());
+        })
+    } else {
+        inventory.splice([index], 1);
         fs.writeFile('inventory.json', JSON.stringify(inventory, null, 2), err =>{
             if (err) throw err;
         })
@@ -121,7 +139,8 @@ async function removeArray(req, res) {
             "expireDate": expireDate,
             "lot": lot,
             "flexPerBox": flexPerBox,
-            "numOfBoxs": fixedNumber
+            "numOfBoxs": fixedNumber,
+            "partNumber": partNumber
         }
         await inventory.unshift(addToInventory);
         fs.writeFile('inventory.json', JSON.stringify(inventory, null, 2), err =>{
@@ -129,6 +148,7 @@ async function removeArray(req, res) {
         console.log(testName, "Box removed", new Date().toLocaleDateString());
     });
     res.send("Number of Boxs updated")
+    }
 }
     
 

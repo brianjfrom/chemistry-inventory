@@ -31,8 +31,8 @@
       </div>
     </div>
     <div class="IM_barcode">
-      <h2>IM Reagents Only</h2>
-      Scan Barcode: <br> <input type="number" class="barcodeNumberIM"
+      <h2>IM Reagents, Calibrators(8 digit num or alpha lot#)</h2>
+      Scan Barcode: <br> <input type="text" class="barcodeNumberIM"
             value="010063041460039010226832511720113024010995459422840">
       <button type="submit" class="bcnSubmitIM">Submit</button>
       <div class="barcode__dataIM">
@@ -44,6 +44,20 @@
         <p class="noteIM"></p>
       </div>
     </div>
+    <div class="Cal_barcode">
+    <h2>Calibrators(6 digit num or alpha lot#)</h2>
+    Scan Barcode: <br> <input type="text" class="barcodeNumberCal"
+          value="010063041460039010226832511720113024010995459422840">
+    <button type="submit" class="bcnSubmitCal">Submit</button>
+    <div class="barcode__dataCal">
+      <p class="reference_numberCal">Reference Number: <span id="refNumCal"></span></p>
+      <p class="lot_numberCal">Lot Number: <span id="lotNumberCal"></span></p>
+      <p class="expire_dateCal">Expire Date: <span id="exDateCal"></span></p>
+      <p class="test_nameCal">Test Name: <span id="test_nameCal"></span> </p>
+      <p class="flex_per_boxCal">Kits Per Box: <span id="flexPerBoxCal"></span></p>
+      <p class="noteCal"></p>
+    </div>
+  </div>
   </div>
   <script src="./remove.js"></script>
 </body>
