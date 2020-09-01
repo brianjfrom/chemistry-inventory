@@ -26,7 +26,7 @@ getData().then(invData => {
         let boxs = numOfBoxs;
         let boxFixed = boxs.toString()
         if (boxs <= 1) {
-          alert("Check inventory, reagent needs to be ordered now.");
+          // alert("Check inventory, reagent needs to be ordered now.");
           return boxFixed.bold().fontcolor('red')
         } else if (boxs <= 2) {
           return boxFixed.bold().fontcolor('red')
@@ -65,16 +65,17 @@ function displayDate(date) {
   function getData() {
     return fetch('../inventory').then(response => response.json())
     .then((inventoryData) => {
-        // return typeData = inventoryData.sort(function(a, b) {
-        //   let typeA = a.pkgType.toUpperCase();
-        //   let typeB = b.pkgType.toUpperCase();
-        //   return (typeA < typeB) ? -1 : (typeA > typeB) ? 1 : 0;
-        // }) 
         return testData = inventoryData.sort(function(a, b) {
             let textA = a.testName.toUpperCase();
             let textB = b.testName.toUpperCase();
             return (textA < textB) ? -1 : (textA > textB) ? 1 : 0
         });
+    }).then((inventoryData) => {
+      return typeData = inventoryData.sort(function(a, b) {
+          let typeA = a.pkgType.toUpperCase();
+          let typeB = b.pkgType.toUpperCase();
+          return (typeA < typeB) ? -1 : (typeA > typeB) ? 1 : 0;
+        }) 
     })
 }
 

@@ -115,7 +115,7 @@
     "shName": "CK_L",
     "refChem": 11097640,
     "name": "CK Total",
-    "type": "IM Reagent",
+    "type": "CH Reagent",
     "flexPerBox": 3
   },
   {
@@ -231,7 +231,7 @@
     "flexPerBox": 4
   },
   {
-    "shName": "Hem A1c_E",
+    "shName": "A1c_E",
     "refChem": 11097536,
     "name": "Hemoglobin A1C",
     "type": "CH Reagent",
@@ -252,7 +252,7 @@
     "flexPerBox": 1
   },
   {
-    "shName": "D_HCL",
+    "shName": "D_HDL",
     "refChem": 11097630,
     "name": "HDL",
     "type": "CH Reagent",
@@ -1251,5 +1251,12 @@
     "name": "RUB G QC",
     "type": "QC",
     "flexPerBox": 1
+  },
+  {
+    "shName": "ThcG Dil",
+    "refChem": 10995691,
+    "name": "ThcG Dil",
+    "type": "Consumable",
+    "flexPerBox": 2
   }
  ]

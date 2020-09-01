@@ -15,7 +15,7 @@ let barcodeCal = document.querySelector('.barcodeNumberCal').value;
 
 fetch('../all').then(Response => Response.json())
   .then((reagentData) => {
-      getBarcode.onclick = function getData() {
+    getBarcode.onclick = function getData() {
       barcode = document.querySelector(".barcodeNumber").value;
       let globalTradeNumber = barcode.slice(2, 16);
       lotNumber = barcode.slice(18, 24);
@@ -82,7 +82,7 @@ fetch('../all').then(Response => Response.json())
     }
     getBarcodeIm.onclick = function getDataIm() {
       barcodeImNotFixed = document.querySelector(".barcodeNumberIM").value;
-      barcodeIm = barcodeImNotFixed.replace( /\\/g, "");
+      barcodeIm = barcodeImNotFixed.replace(/\\/g, "");
 
       // barcodeIm = document.querySelector(".barcodeNumberIM").value;
       let globalTradeNumberIm = barcodeIm.slice(2, 16);
@@ -150,7 +150,7 @@ fetch('../all').then(Response => Response.json())
     }
     getBarcodeCal.onclick = function getDataCal() {
       barcodeCalNotFixed = document.querySelector(".barcodeNumberCal").value;
-      barcodeCal = barcodeCalNotFixed.replace( /\\/g, "");
+      barcodeCal = barcodeCalNotFixed.replace(/\\/g, "");
       console.log(barcodeCal);
       let globalTradeNumberCal = barcodeCal.slice(2, 16);
       console.log(globalTradeNumberCal, "GTN");
@@ -175,12 +175,12 @@ fetch('../all').then(Response => Response.json())
       document.querySelector("#lotNumberCal").innerHTML = lotNumberCal;
       document.querySelector("#exDateCal").innerHTML = displayDate(expireDateCal);
       document.querySelector('.noteCal').innerHTML = "";
-  
+
       let indexCal = reagentData.findIndex(function (refChemsCal, index) {
         return refChemsCal.refChem == refNumberCal;
       });
       console.log(indexCal);
-  
+
       chemTestNameCal = reagentData[indexCal].name.toUpperCase();
       console.log(chemTestNameCal);
       document.querySelector("#test_nameCal").innerHTML = chemTestNameCal;
@@ -189,10 +189,10 @@ fetch('../all').then(Response => Response.json())
       document.querySelector("#flexPerBoxCal").innerHTML = flexBoxCal;
       typeCal = reagentData[indexCal].type;
       referenceCal = reagentData[indexCal].refChem
-  
+
       setTimeout(function getInfoCal() {
         boxNumberCal = 1;
-  
+
         let lotCal = lotNumberCal;
         let expireCal = dateCal;
         let testNameCal = reagentData[indexCal].name.toUpperCase();
@@ -223,5 +223,152 @@ fetch('../all').then(Response => Response.json())
         document.querySelector('.noteCal').innerHTML = '"Box Removed From Inventoy"'
         document.querySelector('.noteCal').style.color = "red";
       }, 2000)
-    }  
+    }
+
+    let getBarcodeOther = document.querySelector(".bcnSubmitOther");
+    let barcodeOther;
+    let dropDownValue;
+    let lotNumberOther;
+    let dateOther;
+    let chemTestNameOther;
+    let chemTestShortNameOther;
+    let flexBoxOther;
+    let boxNumberOther;
+    let typeOther;
+    let referenceOther;
+
+
+    getBarcodeOther.onclick = function getDataOther() {
+      let barcodeOther = document.querySelector(".barcodeNumberOther").value;
+      let dropDownValue = document.querySelector("#other-supplies").value;
+      console.log(dropDownValue);
+
+      if (dropDownValue == 5) {
+        let globalTradeNumberOther = barcodeOther.slice(2, 16);
+        lotNumberOther = barcodeOther.slice(18, 23);
+        console.log(lotNumberOther, "lot #")
+        let expDateStringOther = barcodeOther.slice(25, 31);
+        console.log(expDateStringOther, "date string")
+        let monthOther = expDateStringOther.slice(2, 4);
+        console.log(monthOther, "month")
+        let dayOther = expDateStringOther.slice(4, 7);
+        console.log(dayOther, "day")
+        let yearOther = expDateStringOther.slice(0, 2);
+        console.log(yearOther, "year")
+        dateOther = `${monthOther}-${dayOther}-${yearOther}`;
+        console.log(dateOther, "date")
+        let expireDateOther = new Date(dateOther);
+        let refNumberOther = barcodeOther.slice(34, 42);
+        console.log()
+        console.log(globalTradeNumberOther, "value 5");
+        document.querySelector("#refNumOther").innerHTML = refNumberOther;
+        document.querySelector("#lotNumberOther").innerHTML = lotNumberOther;
+        document.querySelector("#exDateOther").innerHTML = displayDate(expireDateOther);
+        document.querySelector('.noteOther').innerHTML = "";
+
+        let indexOther = reagentData.findIndex(function (refChems, index) {
+          return refChems.refChem == refNumberOther
+        });
+        console.log(indexOther);
+
+        chemTestNameOther = reagentData[indexOther].name.toUpperCase();
+        document.querySelector('#test_nameOther').innerHTML = chemTestNameOther;
+        chemTestShortNameOther = reagentData[indexOther].shName;
+        flexBoxOther = reagentData[indexOther].flexPerBox;
+        document.querySelector('#flexPerBoxOther').innerHTML = flexBoxOther;
+        typeOther = reagentData[indexOther].type;
+        referenceOther = reagentData[indexOther].refChem
+
+      } else if (dropDownValue == 9) {
+        let globalTradeNumberOther = barcodeOther.slice(2, 16);
+        lotNumberOther = barcodeOther.slice(18, 27);
+        let expDateStringOther = barcodeOther.slice(29, 35);
+        let monthOther = expDateStringOther.slice(2, 4);
+        let dayOther = expDateStringOther.slice(4, 7);
+        let yearOther = expDateStringOther.slice(0, 2);
+        dateOther = `${monthOther}-${dayOther}-${yearOther}`;
+        let expireDateOther = new Date(dateOther);
+        let refNumberOther = barcodeOther.slice(38, 46);
+        console.log(refNumberOther, "value 9");
+        document.querySelector("#refNumOther").innerHTML = refNumberOther;
+        document.querySelector("#lotNumberOther").innerHTML = lotNumberOther;
+        document.querySelector("#exDateOther").innerHTML = displayDate(expireDateOther);
+        document.querySelector('.noteOther').innerHTML = "";
+
+        let indexOther = reagentData.findIndex(function (refChems, index) {
+          return refChems.refChem == refNumberOther
+        });
+        console.log(indexOther);
+
+        chemTestNameOther = reagentData[indexOther].name.toUpperCase();
+        document.querySelector('#test_nameOther').innerHTML = chemTestNameOther;
+        chemTestShortNameOther = reagentData[indexOther].shName;
+        flexBoxOther = reagentData[indexOther].flexPerBox;
+        document.querySelector('#flexPerBoxOther').innerHTML = flexBoxOther;
+        typeOther = reagentData[indexOther].type;
+        referenceOther = reagentData[indexOther].refChem
+
+      } else if (dropDownValue == 10) {
+        let globalTradeNumberOther = barcodeOther.slice(2, 16);
+        lotNumberOther = barcodeOther.slice(18, 28);
+        let expDateStringOther = barcodeOther.slice(30, 36);
+        let monthOther = expDateStringOther.slice(2, 4);
+        let dayOther = expDateStringOther.slice(4, 7);
+        let yearOther = expDateStringOther.slice(0, 2);
+        dateOther = `${monthOther}-${dayOther}-${yearOther}`;
+        let expireDateOther = new Date(dateOther);
+        let refNumberOther = barcodeOther.slice(39, 47);
+        console.log(refNumberOther);
+        document.querySelector("#refNumOther").innerHTML = refNumberOther;
+        document.querySelector("#lotNumberOther").innerHTML = lotNumberOther;
+        document.querySelector("#exDateOther").innerHTML = displayDate(expireDateOther);
+        document.querySelector('.noteOther').innerHTML = "";
+
+        let indexOther = reagentData.findIndex(function (refChems, index) {
+          return refChems.refChem == refNumberOther
+        });
+        console.log(indexOther);
+        chemTestNameOther = reagentData[indexOther].name.toUpperCase();
+        document.querySelector('#test_nameOther').innerHTML = chemTestNameOther;
+        chemTestShortNameOther = reagentData[indexOther].shName;
+        flexBoxOther = reagentData[indexOther].flexPerBox;
+        document.querySelector('#flexPerBoxOther').innerHTML = flexBoxOther;
+        typeOther = reagentData[indexOther].type;
+        referenceOther = reagentData[indexOther].refChem
+
+      }
+      setTimeout(function getInfoOther() {
+        boxNumberOther = 1;
+
+        let lotOther = lotNumberOther;
+        let expireOther = dateOther;
+        let testNameOther = chemTestNameOther;
+        console.log(testNameOther);
+        let shortNameOther = chemTestShortNameOther;
+        let flexPerBoxOther = flexBoxOther;
+        let numOfBoxsOther = boxNumberOther;
+        let pkgTypeOther = typeOther;
+        let partNumberOther = referenceOther;
+        let methodDataOther = {
+          method: 'POST',
+          credentials: 'same-origin',
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        }
+        fetch('/remove/' + testNameOther + '.' + shortNameOther + '.' + expireOther + '.' + lotOther + '.' + flexPerBoxOther + '.' + numOfBoxsOther + "." + pkgTypeOther + "." + partNumberOther, methodDataOther)
+          .then(response => {
+            console.log(response)
+          })
+        document.querySelector("#refNumOther").innerHTML = "";
+        document.querySelector("#lotNumberOther").innerHTML = "";
+        document.querySelector("#exDateOther").innerHTML = "";
+        document.querySelector("#test_nameOther").innerHTML = "";
+        document.querySelector("#flexPerBoxOther").innerHTML = "";
+        // document.querySelector("#numberBoxs").value = "";
+        document.querySelector(".barcodeNumberOther").value = "";
+        document.querySelector('.noteOther').innerHTML = '"Box Removed From Inventoy"'
+        document.querySelector('.noteOther').style.color = "red";
+      }, 2000)
+    }
   });
